@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+
+    addressLine1: {
+        type: String,
+        required: false,
+    },
     city: {
         type: String,
         required: false,
