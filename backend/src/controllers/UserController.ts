@@ -37,6 +37,7 @@ const updateUser = async (req: Request, res: Response) => {
         user.addressLine1 = addressLine1;
         user.country = country;
         user.city = city;
+        console.log("Updating user:", user);
 
         await user.save()
 
