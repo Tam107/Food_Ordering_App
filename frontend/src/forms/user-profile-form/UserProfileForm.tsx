@@ -5,6 +5,8 @@ import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, Form
 import {Input} from "@/components/ui/input.tsx";
 import LoadingButton from "@/components/LoadingButton.tsx";
 import {Button} from "@/components/ui/button.tsx";
+import {User} from "@/types.ts";
+import {useEffect} from "react";
 
 const formSchema = z.object({
     email: z.string().optional(),
@@ -19,17 +21,23 @@ const formSchema = z.object({
 type UserFormData = z.infer<typeof formSchema>
 
 type Props = {
+    user: User
     onSave: (userProfileData: UserFormData) => void;
     isLoading: boolean
 }
 
-function UserProfileForm({onSave, isLoading}: Props) {
+function UserProfileForm({user, onSave, isLoading}: Props) {
     console.log(isLoading)
     // Sử dụng useForm hook từ react-hook-form để tạo form
     const form = useForm<UserFormData>({
         // Nói với react-hook-form sử dụng schema của zod để validate
         resolver: zodResolver(formSchema),
+        defaultValues: user
     })
+
+    useEffect(() => {
+        form.reset(user)
+    }, [user, form])
 
     return (
         // get all properties from form object and pass to Form component
@@ -49,7 +57,7 @@ function UserProfileForm({onSave, isLoading}: Props) {
                     <FormItem>
                         <FormLabel>Email</FormLabel>
                         <FormControl>
-                            <Input {...field} className={"bg-white"}/>
+                            <Input {...field} disabled className={"bg-white"}/>
                         </FormControl>
                     </FormItem>
                 )}/>

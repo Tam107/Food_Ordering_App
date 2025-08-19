@@ -5,6 +5,7 @@ import AppRoutes from "@/AppRoutes.tsx";
 import "./global.css"
 import Auth0ProviderWithNavigate from "@/auth/Auth0ProviderWithNavigate.tsx";
 import {QueryClient, QueryClientProvider} from "react-query";
+import {Toaster} from "@/components/ui/sonner.tsx";
 
 /**
  * An instance of QueryClient used to manage queries, caching, and background updating in an application.
@@ -33,6 +34,8 @@ createRoot(document.getElementById('root')!).render(
                 <Auth0ProviderWithNavigate>
                     {/*handling auth0 in children(AppRoutes) eg. AuthCallbackPage*/}
                     <AppRoutes/>
+                    {/*richColors depend on error or successful messages*/}
+                    <Toaster visibleToasts={1} position={"top-right"} richColors/>
                 </Auth0ProviderWithNavigate>
             </QueryClientProvider>
         </Router>

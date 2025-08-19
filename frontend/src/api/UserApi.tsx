@@ -1,9 +1,40 @@
-import {useMutation} from "react-query";
+import {useMutation, useQuery} from "react-query";
 import {useAuth0} from "@auth0/auth0-react";
+import {toast} from "sonner";
+import {User} from "@/types.ts";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
-console.log("API_BASE_URL: ", API_BASE_URL)
+export const useGetUser = () => {
+    const {getAccessTokenSilently} = useAuth0();
+
+    const getUserRequest = async (): Promise<User> => {
+        const accessToken = await getAccessTokenSilently();
+
+        const response = await fetch(`${API_BASE_URL}/api/my/user`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Error fetching user: ${response.statusText}`);
+        }
+        return response.json();
+    }
+    const {
+        data: user,
+        isLoading,
+        error,
+    } = useQuery('user', getUserRequest);
+
+    if (error) {
+        toast.error(`Error fetching user: ${error.toString()}`);
+    }
+
+    return {user, isLoading, error};
+}
 
 type CreateUserRequest = {
     auth0Id: string;
@@ -64,7 +95,7 @@ export const useUpdateUser = () => {
 
         const response = await fetch(`${API_BASE_URL}/api/my/user`, {
             method: 'PUT',
-            headers:{
+            headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${accessToken}`,
             },
@@ -81,12 +112,20 @@ export const useUpdateUser = () => {
     const {
         mutateAsync: updateUser,
         isLoading,
-        isError,
         isSuccess,
         error,
         reset
     } = useMutation(updateUserRequest);
 
-    return {updateUser, isLoading, isError, isSuccess};
+    if (isSuccess) {
+        toast.success("Update user successfully!");
+    }
+
+    if (error) {
+        toast.error(`Error updating user: ${error.toString()}`);
+        reset(); // Reset the mutation state after handling the error
+    }
+
+    return {updateUser, isLoading, error, isSuccess};
 
 }
