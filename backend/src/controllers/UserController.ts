@@ -21,10 +21,11 @@ const createUser = async (req: Request, res: Response) => {
     // create user if not exists
     // return user data
     try {
-        const {auth0id} = req.body;
-        const existingUser = await User.findOne({auth0Id: auth0id});
+        const {auth0Id} = req.body;
+        const existingUser = await User.findOne({auth0Id: auth0Id});
         if (existingUser) {
-            res.status(400).json({message: "User already exists"});
+            console.log("User already exists:", existingUser);
+            return res.status(400).json({message: "User already exists"});
         }
         const user = new User(req.body);
         await user.save();
