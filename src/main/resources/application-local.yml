@@ -8,6 +8,14 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://localhost:8080/auth/realms/food-ordering-app
+
+auth0:
+  audience: ${AUTH0_AUDIENCE}
 
 application:
   jwt:

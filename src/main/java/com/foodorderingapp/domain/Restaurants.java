@@ -1,4 +1,4 @@
-package com.foodorderingapp.model;
+package com.foodorderingapp.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,7 +34,7 @@ public class Restaurants {
     private String imageUrl;
 
     @OneToOne
-    private User user;
+    private UserEntity user;
 
     @OneToMany(mappedBy = "restaurants")
     private List<Cuisine> cuisines;
