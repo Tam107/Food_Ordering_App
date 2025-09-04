@@ -1,4 +1,4 @@
-package com.pm.backendspringboot.application.dto.request;
+package com.pm.backendspringboot.application.dto.request.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,7 +1,7 @@
 package com.pm.backendspringboot.application.user.impl;
 
-import com.pm.backendspringboot.application.dto.request.CreateUserRequest;
-import com.pm.backendspringboot.application.dto.request.UpdateUserRequest;
+import com.pm.backendspringboot.application.dto.request.user.CreateUserRequest;
+import com.pm.backendspringboot.application.dto.request.user.UpdateUserRequest;
 import com.pm.backendspringboot.application.dto.response.UserResponse;
 import com.pm.backendspringboot.application.user.UserService;
 import com.pm.backendspringboot.domain.user.UserEntity;

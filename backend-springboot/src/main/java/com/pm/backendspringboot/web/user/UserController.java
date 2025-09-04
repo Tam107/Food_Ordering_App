@@ -1,9 +1,10 @@
 package com.pm.backendspringboot.web.user;
 
-import com.pm.backendspringboot.application.dto.request.CreateUserRequest;
-import com.pm.backendspringboot.application.dto.request.UpdateUserRequest;
+import com.pm.backendspringboot.application.dto.request.user.CreateUserRequest;
+import com.pm.backendspringboot.application.dto.request.user.UpdateUserRequest;
 import com.pm.backendspringboot.application.dto.response.UserResponse;
 import com.pm.backendspringboot.application.user.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class UserController {
 
 
     @PostMapping("/my/user")
-    public ResponseEntity<UserResponse> createUser(@RequestBody CreateUserRequest createUserRequest,
+    public ResponseEntity<UserResponse> createUser(@RequestBody @Valid CreateUserRequest createUserRequest,
                                                    @AuthenticationPrincipal Jwt jwt) {
         String jwtAuth0Id = jwt.getSubject();
         if (!jwtAuth0Id.equals(createUserRequest.auth0Id())) {
