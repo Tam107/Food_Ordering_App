@@ -9,6 +9,8 @@ import MenuSection from "@/forms/manage-restaurant-form/MenuSection.tsx";
 import ImageSection from "@/forms/manage-restaurant-form/ImageSection.tsx";
 import LoadingButton from "@/components/LoadingButton.tsx";
 import {Button} from "@/components/ui/button.tsx";
+import {Restaurant} from "@/types.ts";
+import {useEffect} from "react";
 
 const formSchema = z.object({
     restaurantName: z.string({
@@ -47,11 +49,12 @@ const formSchema = z.object({
 type RestaurantFormData = z.infer<typeof formSchema>;
 
 type Props = {
+    restaurant?: Restaurant;
     onSave: (restaurantFormData: FormData) => void;
     isLoading: boolean;
 }
 
-function ManageRestaurantForm({onSave, isLoading}: Props) {
+function ManageRestaurantForm({onSave, isLoading, restaurant}: Props) {
 
     const form = useForm<RestaurantFormData>({
         resolver: zodResolver(formSchema),
@@ -61,12 +64,32 @@ function ManageRestaurantForm({onSave, isLoading}: Props) {
             country: "",
             deliveryPrice: 0,
             estimatedDeliveryTime: 0,
-            cuisines: [],
-            menuItems: [{name: "", price: 0}],
-            imageFile: undefined,
         }
     });
-    console.log(onSave, isLoading)
+
+    useEffect(() => {
+        // if user visit the page in the first time, there are none restaurants then returns null
+        if (!restaurant) {
+            return
+        }
+
+        const deliveryPriceFormatted = parseInt((restaurant.deliveryPrice / 100).toFixed(2));
+
+        // ({}) => return an object
+        const menuItemsFormatted = restaurant.menuItems.map((item) => ({
+            ...item,
+            price: parseInt((item.price / 100).toFixed(2))
+        }))
+
+        const updatedRestaurant = {
+            ...restaurant,
+            deliveryPrice: deliveryPriceFormatted,
+            menuItems: menuItemsFormatted
+        }
+
+        form.reset(updatedRestaurant)
+
+    }, [form, restaurant])
 
     const onSubmit = (formDataJson: RestaurantFormData) => {
         //     Todo - convert formDataJson to a new FormData object
@@ -75,20 +98,26 @@ function ManageRestaurantForm({onSave, isLoading}: Props) {
         formData.append("city", formDataJson.city)
         formData.append("country", formDataJson.country)
 
+
         // 1GBG = 100 pence
         // 1.50GBP = 150 pence < lowest denomination
         formData.append("deliveryPrice", (formDataJson.deliveryPrice * 100).toString())
         formData.append("estimatedDeliveryTime", formDataJson.estimatedDeliveryTime.toString())
 
         formDataJson.cuisines.forEach((cuisine, index) => {
-            formData.append(`cuisine[${index}]`, cuisine)
+            formData.append(`cuisines[${index}]`, cuisine)
         })
+        console.log("cuisines: ", formDataJson.cuisines)
+
         formDataJson.menuItems.forEach((menuItem, index) => {
             formData.append(`menuItems[${index}][name]`, menuItem.name)
-            formData.append(`menuItems[${index}][name]`, (menuItem.price * 100).toString())
+            formData.append(`menuItems[${index}][price]`, (menuItem.price * 100).toString())
         });
         formData.append(`imageFile`, formDataJson.imageFile)
-
+        console.log("Form data:");
+        for (const [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
         onSave(formData)
     }
 

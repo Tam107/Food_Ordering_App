@@ -1,0 +1,5 @@
+# Created at 2025-08-31T15:57:09.945
+Boot Manifest-JAR contains absolute paths in classpath 'E:\ProjectCV\Food_Ordering_App\backend-springboot\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+

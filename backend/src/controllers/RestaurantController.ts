@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 const createRestaurant = async (req: Request, res: Response) => {
     try {
         // one user can create only one restaurant
+        console.log("body: ",req.body)
         const existingRestaurant = await Restaurant.findOne({user: req.userId});
 
         if (existingRestaurant) {
@@ -19,6 +20,7 @@ const createRestaurant = async (req: Request, res: Response) => {
 
         const uploadResponse = await cloudinary.v2.uploader.upload(dataURI);
         const restaurant = new Restaurant(req.body);
+        console.log(restaurant)
         restaurant.imageUrl = uploadResponse.url;
         restaurant.user = new mongoose.Types.ObjectId(req.userId);
         await restaurant.save()
@@ -34,6 +36,21 @@ const createRestaurant = async (req: Request, res: Response) => {
     }
 }
 
+
+const getRestaurant = async (req: Request, res: Response) => {
+    try {
+        const restaurant = await Restaurant.findOne({user: req.userId})
+        if (!restaurant) {
+            return res.status(404).json({message: "Cannot find the restaurant"})
+        }
+        res.json(restaurant)
+    } catch (e) {
+        console.log("error in get restaurant", e)
+        res.status(500).json({message: "Error fetching restaurant"})
+    }
+}
+
 export default {
     createRestaurant,
+    getRestaurant
 }
