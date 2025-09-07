@@ -16,18 +16,17 @@ public class FileServiceImpl implements FileService {
 
     private final Cloudinary cloudinary;
 
-    public Map upload(MultipartFile file, String folderName) throws IOException {
-        return cloudinary.uploader().upload(file.getBytes(),
-                ObjectUtils.asMap(
-                        "folder", folderName
-                ));
+    public String uploadFile(MultipartFile file) {
+        try {
+            Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+            return (String) uploadResult.get("url");
+        } catch (IOException e) {
+            throw new RuntimeException("Image upload failed", e);
+        }
     }
 
-    public Map uploadVideo(MultipartFile file, String folderName) throws IOException {
+    public Map uploadVideo(MultipartFile file) throws IOException {
         return cloudinary.uploader().upload(file.getBytes(),
-                ObjectUtils.asMap(
-                        "resource_type", "video",
-                        "folder", folderName
-                ));
+                ObjectUtils.emptyMap());
     }
 }

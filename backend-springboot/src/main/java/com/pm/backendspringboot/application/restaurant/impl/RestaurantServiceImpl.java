@@ -29,59 +29,20 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 
     @Override
-    public CreateRestaurantResponse createRestaurantResponse() {
-        return null;
-    }
+    public CreateRestaurantResponse createRestaurantResponse(CreateRestaurantRequest request, MultipartFile file, String userId) throws IOException {
+        UserEntity user = userRepository.findByAuth0Id(userId).orElseThrow(
+                ()-> new ResponseStatusException(HttpStatus.UNAUTHORIZED,"User not found")
+        );
 
-
-    @Transactional
-    public CreateRestaurantResponse createRestaurantResponse(CreateRestaurantRequest request, MultipartFile imageFile, Long userId) {
-        if (userId == null) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Missing authenticated user");
+        if (restaurantRepository.existsByUserId(user.getId())){
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"User already exists restaurant");
         }
-        if (restaurantRepository.existsByUserId(userId)) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "User already has a restaurant");
-        }
-
-        UserEntity user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
-
-        String imageUrl = request.getImageUrl();
-        if (imageFile != null && !imageFile.isEmpty()) {
-            try {
-                Map uploadRes = fileService.upload(imageFile, "restaurants");
-                Object secureUrl = uploadRes.get("secure_url");
-                if (secureUrl != null) {
-                    imageUrl = secureUrl.toString();
-                }
-            } catch (IOException e) {
-                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Image upload failed", e);
-            }
-        } else if (imageUrl == null || imageUrl.isBlank()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Image file or imageUrl is required");
-        }
+        String imgUrl = fileService.upload(file);
 
         Restaurant restaurant = new Restaurant();
-        restaurant.setName(request.getName());
-        restaurant.setCity(request.getCity());
-        restaurant.setCountry(request.getCountry());
-        restaurant.setDeliveryPrice(request.getDeliveryPrice());
-        restaurant.setEstimatedDeliveryTime(request.getEstimatedDeliveryTime());
-        restaurant.setImageUrl(imageUrl);
-        restaurant.setUser(user);
-        restaurant.setLastUpdated(LocalDateTime.now());
+        // todo implement dto mapping
 
-        Restaurant saved = restaurantRepository.save(restaurant);
-
-        return CreateRestaurantResponse.builder()
-                .id(String.valueOf(saved.getId()))
-                .name(saved.getName())
-                .city(saved.getCity())
-                .country(saved.getCountry())
-                .deliveryPrice(saved.getDeliveryPrice())
-                .estimatedDeliveryTime(saved.getEstimatedDeliveryTime())
-                .imageUrl(saved.getImageUrl())
-                .build();
+        return null;
     }
 }
 

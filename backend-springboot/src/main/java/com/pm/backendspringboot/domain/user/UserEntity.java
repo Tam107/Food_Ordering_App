@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.nio.file.attribute.UserPrincipal;
+
 @Entity
 @Table(name = "user")
 @Data

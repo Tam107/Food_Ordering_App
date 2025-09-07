@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Map;
 
 public interface FileService {
-    Map upload(MultipartFile file, String folderName) throws IOException;
-    Map uploadVideo(MultipartFile file, String folderName) throws IOException;
+    String upload(MultipartFile file) throws IOException;
+    Map uploadVideo(MultipartFile file) throws IOException;
 
 }
