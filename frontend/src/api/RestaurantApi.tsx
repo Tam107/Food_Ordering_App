@@ -66,3 +66,35 @@ export const useCreateRestaurant = () => {
 
     return {createRestaurant, isSuccess, isLoading};
 }
+
+// the promise declaration as the return type for this function
+export const useUpdateRestaurant = () => {
+    const {getAccessTokenSilently} = useAuth0();
+
+    const updateRestaurantRequest = async (restaurantFormData: FormData): Promise<Restaurant> => {
+        const accessToken = await getAccessTokenSilently();
+
+        const response = await fetch(`${API_BASE_URL}/api/my/restaurant`, {
+            method: "PUT",
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+            body: restaurantFormData
+        })
+        console.log("response: ", response)
+        if (!response.ok) {
+            throw new Error("Failed to update restaurant");
+        }
+        return response.json();
+    }
+    const {mutate: updateRestaurant, isLoading, isSuccess, error} = useMutation(updateRestaurantRequest);
+
+    if (isSuccess) {
+        toast.success("Successfully update restaurant");
+    }
+
+    if (error) {
+        toast.error("Unable to update restaurant");
+    }
+    return {updateRestaurant, isLoading, isSuccess, error}
+}

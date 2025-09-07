@@ -5,14 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46f5f813-3110-4bbe-81ec-458d68f08684" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/routes/RestaurantFeaturesRoute.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/src/main/java/com/pm/backendspringboot/application/file/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend-springboot/src/main/java/com/pm/backendspringboot/application/file/impl/FileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend-springboot/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/application/dto/request/CreateUserRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/application/dto/request/UpdateUserRequest$UpdateUserRequestBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/application/dto/request/UpdateUserRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/application/user/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/application/user/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/application/user/impl/UserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/domain/user/UserEntity$UserEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/domain/user/UserEntity$UserEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/domain/user/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/domain/user/UserEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/target/classes/com/pm/backendspringboot/web/user/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-springboot/target/test-classes/com/pm/backendspringboot/BackendSpringbootApplicationTests.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/controllers/RestaurantController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/controllers/RestaurantController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/middleware/validation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/middleware/validation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/models/restaurant.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/models/restaurant.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/routes/RestaurantRoute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/routes/RestaurantRoute.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/api/RestaurantApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/RestaurantApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/forms/manage-restaurant-form/CuisineCheckbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/forms/manage-restaurant-form/CuisineCheckbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/auth/ProtectedRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/auth/ProtectedRoute.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/forms/manage-restaurant-form/ImageSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/forms/manage-restaurant-form/ImageSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/forms/manage-restaurant-form/ManageRestaurantForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/forms/manage-restaurant-form/ManageRestaurantForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/ManageRestaurantPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ManageRestaurantPage.tsx" afterDir="false" />
     </list>
@@ -33,7 +47,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="backend-springboot" />
+        <entry key="$PROJECT_DIR$" value="test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,7 +61,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Tam107/Food_Ordering_App.git&quot;,
-    &quot;accountId&quot;: &quot;f9796ca0-c81e-4367-a110-fca5f7efcf39&quot;
+    &quot;accountId&quot;: &quot;5cb842b3-a241-4ebd-b195-b28bf8790ad1&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -69,33 +83,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/MyProject/FoodOrderingApp&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\ProjectCV\\Food_Ordering_App\\frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/ProjectCV/Food_Ordering_App",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.general",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "E:\\ProjectCV\\Food_Ordering_App\\frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
-  <component name="RunManager" selected="Spring Boot.BackendSpringbootApplication">
+}]]></component>
+  <component name="RunManager">
     <configuration name="BackendSpringbootApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="backend-springboot" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.pm.backendspringboot.BackendSpringbootApplication" />
@@ -114,10 +132,11 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.27812.50" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.112" />
       </set>
     </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="46f5f813-3110-4bbe-81ec-458d68f08684" name="Changes" comment="" />
@@ -133,10 +152,26 @@
       <workItem from="1757167094266" duration="1158000" />
       <workItem from="1757176755535" duration="37000" />
       <workItem from="1757179970775" duration="17000" />
+      <workItem from="1757254959634" duration="196000" />
+      <workItem from="1757255209442" duration="165000" />
+      <workItem from="1757255379448" duration="26000" />
+      <workItem from="1757255415926" duration="232000" />
+      <workItem from="1757255675598" duration="5345000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

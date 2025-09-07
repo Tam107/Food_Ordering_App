@@ -26,6 +26,11 @@ application:
   file:
     uploads:
       path: ./uploads
+cloudinary:
+  cloud-name: dxhlxhjxw
+  api-key: 948155626724819
+  api-secret: iVmZ5QZKz4mcvh58prZzZxU2I6k
+
 server:
   port: 7000
 logging:

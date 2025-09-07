@@ -41,9 +41,14 @@ const formSchema = z.object({
         name: z.string().min(1, "name is required"),
         price: z.coerce.number().min(1, "price must be greater than 0"),
     })),
+    imageUrl: z.string().optional()
+    ,
     imageFile: z.instanceof(File, {
         message: "image file is required",
-    })
+    }).optional()
+}).refine((data) => data.imageUrl || data.imageFile, {
+    message: "Either image URL or image File must be provided",
+    path: ["imageFile"],
 })
 
 type RestaurantFormData = z.infer<typeof formSchema>;
@@ -64,6 +69,7 @@ function ManageRestaurantForm({onSave, isLoading, restaurant}: Props) {
             country: "",
             deliveryPrice: 0,
             estimatedDeliveryTime: 0,
+            cuisines: []
         }
     });
 
@@ -113,11 +119,14 @@ function ManageRestaurantForm({onSave, isLoading, restaurant}: Props) {
             formData.append(`menuItems[${index}][name]`, menuItem.name)
             formData.append(`menuItems[${index}][price]`, (menuItem.price * 100).toString())
         });
-        formData.append(`imageFile`, formDataJson.imageFile)
-        console.log("Form data:");
-        for (const [key, value] of formData.entries()) {
-            console.log(key, value);
+
+        if (formDataJson.imageFile) {
+            formData.append(`imageFile`, formDataJson.imageFile)
         }
+        // console.log("Form data:");
+        // for (const [key, value] of formData.entries()) {
+        //     console.log(key, value);
+        // }
         onSave(formData)
     }
 

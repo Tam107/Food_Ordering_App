@@ -18,4 +18,6 @@ router.post("/",upload.single('imageFile'), validateRestaurantRequest, jwtCheck,
 
 router.get("/", jwtParse, jwtCheck, RestaurantController.getRestaurant)
 
+router.put("/",upload.single('imageFile'), validateRestaurantRequest, jwtParse, jwtCheck, RestaurantController.updateRestaurant)
+
 export default router;

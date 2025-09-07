@@ -16,7 +16,8 @@ public class FileServiceImpl implements FileService {
 
     private final Cloudinary cloudinary;
 
-    public String uploadFile(MultipartFile file) {
+    @Override
+    public String upload(MultipartFile file) {
         try {
             Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
             return (String) uploadResult.get("url");
